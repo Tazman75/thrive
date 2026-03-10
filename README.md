@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# Thrive Family Counseling
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website for Thrive Family Counseling — compassionate counseling for children, adolescents, adults, and families in DuPage County, Illinois.
 
-Currently, two official plugins are available:
+**Live site:** https://www.tfcthrive.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Development
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install        # Install dependencies
+npm run dev        # Start dev server (http://localhost:5173)
+npm run build      # Production build
+npm run preview    # Preview production build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Analytics
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Google Analytics 4 is integrated via gtag.js in `index.html` (Measurement ID: `G-XQ0MM6DSEH`).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### UTM Tracking
+
+The site detects UTM parameters from inbound links and stores them in sessionStorage for the duration of the visit. UTM params are cleaned from the URL after capture.
+
+**Hook:** `src/hooks/useUTMSource.ts`
+
+### Psychology Today Integration
+
+Visitors arriving with `utm_source=psychologytoday` see a dedicated welcome page (`src/components/PTWelcome.tsx`) with:
+
+- Personalized greeting acknowledging they came from Psychology Today
+- Brief intro about Simone and her areas of focus
+- Consultation request form (name, email, phone, interest area, message)
+- Direct call and email buttons
+- "View Full Site" link to explore the full website
+
+**Psychology Today profile URL** (use this as the website link on the PT profile):
+
 ```
+https://www.tfcthrive.com/?utm_source=psychologytoday&utm_medium=referral&utm_campaign=therapist-profile
+```
+
+**Viewing analytics in GA4:**
+1. Go to [analytics.google.com](https://analytics.google.com)
+2. Navigate to Reports > Acquisition > Traffic Acquisition
+3. Look for `psychologytoday` under the Source column to see visit counts, engagement, and conversions from PT
+
+## Project Structure
+
+```
+src/
+  components/
+    Nav.tsx           Navigation bar
+    Hero.tsx          Landing hero section
+    About.tsx         About the therapist
+    Services.tsx      Services offered
+    Approach.tsx      Therapeutic approach
+    Contact.tsx       Contact form and info
+    Footer.tsx        Site footer
+    PTWelcome.tsx     Psychology Today landing page
+  hooks/
+    useInView.ts      Intersection Observer hook for scroll animations
+    useUTMSource.ts   UTM parameter detection and storage
+  App.tsx             Main app with PT visitor routing
+  main.tsx            Entry point
+  index.css           Global styles and Tailwind theme
+public/               Static assets
+tools/                Dev utilities (screenshots)
+```
+
+## Client Marketing Channels
+
+### Channel 1 — Psychology Today
+
+- Each therapist profile should link to the site using the UTM-tagged URL above
+- Cost: ~$30/month per therapist
+- Expected return: 5–20 leads/month
+- GA4 tracks click-throughs automatically via UTM parameters
+
+### Tracking Checklist
+
+- [x] Google Analytics 4 installed
+- [x] UTM parameter detection
+- [x] Psychology Today custom landing page
+- [ ] Form submission backend (currently frontend-only)
+- [ ] Google Search Console setup
+- [ ] Conversion events in GA4 (form submissions, phone clicks)
