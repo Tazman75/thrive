@@ -43,5 +43,11 @@ public/           Static assets (images, fonts, favicons)
 - Use imperative mood in subject lines (e.g., "Add feature" not "Added feature")
 
 ## Screenshot Workflow
-- After making visual changes, screenshot and review with the Read tool
+- Script: `node tools/screenshot.mjs <url> [label]`
+- Screenshots save to `temporary-screenshots/screenshot-N.png` (auto-incremented)
+- Optional label suffix: `node tools/screenshot.mjs http://localhost:5174 label` → `screenshot-N-label.png`
+- Uses system Chrome (`/usr/bin/google-chrome-stable`) via puppeteer-core — no extra download needed
+- After screenshotting, read the PNG with the Read tool to visually analyze the result
 - When comparing against a reference, be specific: exact px values, hex colors, spacing, alignment
+- Hydro dev server: `http://localhost:5174` (run `npm run dev` in `frontend/react/hydro/`)
+- Deployed hydro: `https://hydro.local.tagntrk.com`
