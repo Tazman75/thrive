@@ -76,16 +76,26 @@ export default function PTWelcome({ onViewFullSite }: PTWelcomeProps) {
               <span className="italic text-sage">found me.</span>
             </h1>
 
-            <p className="animate-fade-up delay-200 text-lg text-brown-light leading-relaxed mb-6">
+            <p className="animate-fade-up delay-200 text-lg text-brown-light leading-relaxed mb-8">
               Taking this step shows real courage. Whether you're seeking support for
               yourself, your child, or your family — you're in the right place.
             </p>
 
-            <p className="animate-fade-up delay-300 text-brown-light leading-relaxed mb-10">
-              I'm Simone, a Licensed Clinical Professional Counselor with nearly two decades
-              of experience. I work with children, adolescents, adults, and families
-              using a compassionate, collaborative approach tailored to your unique needs.
-            </p>
+            {/* Photo + intro */}
+            <div className="animate-fade-up delay-300 flex items-start gap-5 mb-10">
+              <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-sage/10 ring-offset-2 ring-offset-cream">
+                <img
+                  src="/simone.jpeg"
+                  alt="Simone Shepardson"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <p className="text-brown-light leading-relaxed pt-1">
+                I'm Simone, a Licensed Clinical Professional Counselor with nearly two decades
+                of experience. I work with children, adolescents, adults, and families
+                using a compassionate, collaborative approach tailored to your unique needs.
+              </p>
+            </div>
 
             {/* Quick specialties */}
             <div className="animate-fade-up delay-400 mb-10">

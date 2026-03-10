@@ -13,22 +13,13 @@ export default function About() {
           {/* Left - Image placeholder with organic shape */}
           <div className={`relative ${isInView ? 'animate-fade-up' : 'opacity-0'}`}>
             <div className="relative aspect-[4/5] rounded-[2rem_6rem_2rem_6rem] bg-sage/10 overflow-hidden">
-              {/* Placeholder with warm gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-sage-light via-cream-dark to-sage-light/50" />
-              {/* Decorative leaf pattern */}
-              <svg className="absolute inset-0 w-full h-full opacity-[0.07]" viewBox="0 0 400 500">
-                <circle cx="200" cy="150" r="80" fill="currentColor" className="text-sage" />
-                <circle cx="120" cy="280" r="50" fill="currentColor" className="text-sage" />
-                <circle cx="300" cy="350" r="60" fill="currentColor" className="text-sage" />
-                <circle cx="180" cy="420" r="40" fill="currentColor" className="text-sage" />
-              </svg>
-              {/* Center text */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center px-8">
-                  <div className="font-serif text-6xl text-sage/30 mb-2">T</div>
-                  <p className="text-sm text-sage/50 tracking-widest uppercase">Photo coming soon</p>
-                </div>
-              </div>
+              <img
+                src="/simone.jpeg"
+                alt="Simone Shepardson, Licensed Clinical Professional Counselor"
+                className="absolute inset-0 w-full h-full object-cover object-top"
+              />
+              {/* Subtle warm overlay for color cohesion */}
+              <div className="absolute inset-0 bg-gradient-to-t from-sage-dark/10 via-transparent to-transparent" />
             </div>
             {/* Floating accent */}
             <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-terracotta/10 -z-10" />
