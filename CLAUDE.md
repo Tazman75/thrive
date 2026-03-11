@@ -33,7 +33,19 @@ public/           Static assets (images, fonts, favicons)
 
 ## Deployment
 
-- TBD — static hosting (Netlify, Vercel, S3+CloudFront, or similar)
+- **Hosting:** AWS Lightsail instance `thrive-web` (Ubuntu, nginx), AWS profile `thrive`
+- **Static IP:** 3.15.252.24
+- **Mock site:** `https://mock.tfcthrive.com` → `/var/www/thrive-app`
+- **Production site:** `https://www.tfcthrive.com` → `/var/www/coming-soon` (will switch to thrive-app when ready)
+- **SSH:** `ssh ubuntu@3.15.252.24`
+
+### Deploy to mock
+
+```bash
+npm run build
+rsync -avz dist/ ubuntu@3.15.252.24:/tmp/thrive-deploy/
+ssh ubuntu@3.15.252.24 "sudo rsync -avz --delete /tmp/thrive-deploy/ /var/www/thrive-app/ && rm -rf /tmp/thrive-deploy"
+```
 
 ## Git Commit Conventions
 
