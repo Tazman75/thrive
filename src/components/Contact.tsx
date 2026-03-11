@@ -1,7 +1,26 @@
+import { useRef } from 'react'
 import { useInView } from '../hooks/useInView'
+import { useContactForm } from '../hooks/useContactForm'
 
 export default function Contact() {
   const { ref, isInView } = useInView()
+  const { status, errorMessage, submitForm, reset } = useContactForm()
+  const formRef = useRef<HTMLFormElement>(null)
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const form = formRef.current
+    if (!form) return
+
+    const data = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      interest: (form.elements.namedItem('interest') as HTMLSelectElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+    }
+
+    submitForm(data)
+  }
 
   return (
     <section id="contact" className="relative py-24 md:py-36 bg-sage-light/40 overflow-hidden">
@@ -50,8 +69,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-brown-light/70 mb-0.5">Phone</p>
-                  <a href="tel:+1234567890" className="text-brown font-medium hover:text-sage transition-colors">
-                    (123) 456-7890
+                  <a href="tel:+16305576933" className="text-brown font-medium hover:text-sage transition-colors">
+                    (630) 557-6933
                   </a>
                 </div>
               </div>
@@ -74,73 +93,108 @@ export default function Contact() {
 
           {/* Right - Contact form */}
           <div className={`${isInView ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="bg-warm-white rounded-3xl p-8 md:p-10 shadow-sm shadow-sage/[0.05]"
-            >
-              <div className="space-y-5">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-brown-light mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
-                    placeholder="Your name"
-                  />
+            {status === 'success' ? (
+              <div className="bg-warm-white rounded-3xl p-8 md:p-10 shadow-sm shadow-sage/[0.05] text-center">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-sage/10 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 6L9 17L4 12" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-brown-light mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="interest" className="block text-sm font-medium text-brown-light mb-2">
-                    I'm interested in
-                  </label>
-                  <select
-                    id="interest"
-                    className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
-                  >
-                    <option value="">Select an area...</option>
-                    <option value="child">Child & Adolescent Counseling</option>
-                    <option value="adult">Adult & Individual Counseling</option>
-                    <option value="family">Family Counseling</option>
-                    <option value="gifted">Gifted & Neurodivergent Support</option>
-                    <option value="anxiety">Anxiety & Depression</option>
-                    <option value="trauma">Trauma-Informed Care</option>
-                    <option value="other">Something else</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-brown-light mb-2">
-                    Message <span className="text-brown-light/40">(optional)</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all resize-none"
-                    placeholder="Tell me a little about what brings you here..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-sage text-warm-white font-medium rounded-full hover:bg-sage-dark transition-all duration-300 hover:shadow-lg hover:shadow-sage/20 tracking-wide"
-                >
-                  Send Message
-                </button>
-                <p className="text-xs text-brown-light/50 text-center">
-                  Your information is kept strictly confidential.
+                <h3 className="font-serif text-2xl font-medium text-brown mb-3">Message sent!</h3>
+                <p className="text-brown-light leading-relaxed mb-6">
+                  Thank you for reaching out. I'll get back to you within 24 hours.
                 </p>
+                <button
+                  onClick={reset}
+                  className="text-sm text-sage hover:text-sage-dark transition-colors"
+                >
+                  Send another message
+                </button>
               </div>
-            </form>
+            ) : (
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="bg-warm-white rounded-3xl p-8 md:p-10 shadow-sm shadow-sage/[0.05]"
+              >
+                <div className="space-y-5">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-brown-light mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-brown-light mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="interest" className="block text-sm font-medium text-brown-light mb-2">
+                      I'm interested in
+                    </label>
+                    <select
+                      id="interest"
+                      name="interest"
+                      className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
+                    >
+                      <option value="">Select an area...</option>
+                      <option value="child">Child & Adolescent Counseling</option>
+                      <option value="adult">Adult & Individual Counseling</option>
+                      <option value="family">Family Counseling</option>
+                      <option value="gifted">Gifted & Neurodivergent Support</option>
+                      <option value="anxiety">Anxiety & Depression</option>
+                      <option value="trauma">Trauma-Informed Care</option>
+                      <option value="other">Something else</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-brown-light mb-2">
+                      Message <span className="text-brown-light/40">(optional)</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all resize-none"
+                      placeholder="Tell me a little about what brings you here..."
+                    />
+                  </div>
+
+                  {status === 'error' && (
+                    <p className="text-sm text-red-600 bg-red-50 px-4 py-3 rounded-xl">
+                      {errorMessage}
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className="w-full py-4 bg-sage text-warm-white font-medium rounded-full hover:bg-sage-dark transition-all duration-300 hover:shadow-lg hover:shadow-sage/20 tracking-wide disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {status === 'submitting' ? 'Sending...' : 'Send Message'}
+                  </button>
+                  <p className="text-xs text-brown-light/50 text-center">
+                    Your information is kept strictly confidential.
+                  </p>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>

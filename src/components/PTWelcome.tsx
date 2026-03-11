@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { useContactForm } from '../hooks/useContactForm'
 
 interface PTWelcomeProps {
   onViewFullSite: () => void
@@ -6,6 +7,23 @@ interface PTWelcomeProps {
 
 export default function PTWelcome({ onViewFullSite }: PTWelcomeProps) {
   const [formFocused, setFormFocused] = useState(false)
+  const { status, errorMessage, submitForm, reset } = useContactForm()
+  const formRef = useRef<HTMLFormElement>(null)
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const form = formRef.current
+    if (!form) return
+
+    submitForm({
+      name: (form.elements.namedItem('pt-name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('pt-email') as HTMLInputElement).value,
+      phone: (form.elements.namedItem('pt-phone') as HTMLInputElement).value,
+      interest: (form.elements.namedItem('pt-interest') as HTMLSelectElement).value,
+      message: (form.elements.namedItem('pt-message') as HTMLTextAreaElement).value,
+      source: 'psychologytoday',
+    })
+  }
 
   return (
     <div className="min-h-screen bg-cream relative overflow-hidden">
@@ -151,136 +169,176 @@ export default function PTWelcome({ onViewFullSite }: PTWelcomeProps) {
                 formFocused ? 'shadow-lg shadow-sage/[0.08]' : 'shadow-sage/[0.04]'
               }`}
             >
-              <h2 className="font-serif text-2xl md:text-3xl font-medium text-brown mb-2">
-                Let's start with a{' '}
-                <span className="italic text-sage">conversation.</span>
-              </h2>
-              <p className="text-sm text-brown-light/70 mb-8">
-                Schedule a free 15-minute phone consultation. Tell me a little about what brings you here.
-              </p>
-
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className="space-y-4">
-                  <div>
-                    <label htmlFor="pt-name" className="block text-sm font-medium text-brown-light mb-1.5">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="pt-name"
-                      onFocus={() => setFormFocused(true)}
-                      onBlur={() => setFormFocused(false)}
-                      className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
-                      placeholder="Your name"
-                    />
+              {status === 'success' ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-sage/10 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M20 6L9 17L4 12" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label htmlFor="pt-email" className="block text-sm font-medium text-brown-light mb-1.5">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="pt-email"
-                        onFocus={() => setFormFocused(true)}
-                        onBlur={() => setFormFocused(false)}
-                        className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
-                        placeholder="Email"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="pt-phone" className="block text-sm font-medium text-brown-light mb-1.5">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        id="pt-phone"
-                        onFocus={() => setFormFocused(true)}
-                        onBlur={() => setFormFocused(false)}
-                        className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
-                        placeholder="Phone"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="pt-interest" className="block text-sm font-medium text-brown-light mb-1.5">
-                      I'm looking for help with
-                    </label>
-                    <select
-                      id="pt-interest"
-                      onFocus={() => setFormFocused(true)}
-                      onBlur={() => setFormFocused(false)}
-                      className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
-                    >
-                      <option value="">Select an area...</option>
-                      <option value="child">Child & Adolescent Counseling</option>
-                      <option value="adult">Adult & Individual Counseling</option>
-                      <option value="family">Family Counseling</option>
-                      <option value="gifted">Gifted & Neurodivergent Support</option>
-                      <option value="anxiety">Anxiety & Depression</option>
-                      <option value="trauma">Trauma-Informed Care</option>
-                      <option value="other">Something else</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="pt-message" className="block text-sm font-medium text-brown-light mb-1.5">
-                      Anything you'd like to share <span className="text-brown-light/40">(optional)</span>
-                    </label>
-                    <textarea
-                      id="pt-message"
-                      rows={3}
-                      onFocus={() => setFormFocused(true)}
-                      onBlur={() => setFormFocused(false)}
-                      className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all resize-none"
-                      placeholder="What's bringing you to counseling?"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 bg-sage text-warm-white font-medium rounded-full hover:bg-sage-dark transition-all duration-300 hover:shadow-lg hover:shadow-sage/20 tracking-wide text-base mt-2"
-                  >
-                    Request Free Consultation
-                  </button>
-
-                  <p className="text-xs text-brown-light/50 text-center">
-                    Your information is kept strictly confidential.
+                  <h3 className="font-serif text-2xl font-medium text-brown mb-3">Message sent!</h3>
+                  <p className="text-brown-light leading-relaxed mb-6">
+                    Thank you for reaching out. I'll get back to you within 24 hours.
                   </p>
+                  <button
+                    onClick={reset}
+                    className="text-sm text-sage hover:text-sage-dark transition-colors"
+                  >
+                    Send another message
+                  </button>
                 </div>
-              </form>
+              ) : (
+                <>
+                  <h2 className="font-serif text-2xl md:text-3xl font-medium text-brown mb-2">
+                    Let's start with a{' '}
+                    <span className="italic text-sage">conversation.</span>
+                  </h2>
+                  <p className="text-sm text-brown-light/70 mb-8">
+                    Schedule a free 15-minute phone consultation. Tell me a little about what brings you here.
+                  </p>
 
-              {/* Divider */}
-              <div className="flex items-center gap-4 my-6">
-                <div className="flex-1 h-px bg-sage/10" />
-                <span className="text-xs text-brown-light/40 uppercase tracking-widest">or</span>
-                <div className="flex-1 h-px bg-sage/10" />
-              </div>
+                  <form ref={formRef} onSubmit={handleSubmit}>
+                    <div className="space-y-4">
+                      <div>
+                        <label htmlFor="pt-name" className="block text-sm font-medium text-brown-light mb-1.5">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          id="pt-name"
+                          name="pt-name"
+                          required
+                          onFocus={() => setFormFocused(true)}
+                          onBlur={() => setFormFocused(false)}
+                          className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
+                          placeholder="Your name"
+                        />
+                      </div>
 
-              {/* Direct contact */}
-              <div className="flex flex-col gap-3">
-                <a
-                  href="tel:+1234567890"
-                  className="flex items-center justify-center gap-2.5 w-full py-3.5 border border-sage/20 text-sage font-medium rounded-full hover:bg-sage-light/40 transition-all duration-200 text-sm tracking-wide"
-                >
-                  <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M3 2H6L7.5 5.5L5.5 7C6.5 9 8 10.5 10 11.5L11.5 9.5L15 11V14C15 14.5523 14.5523 15 14 15C7.37258 15 2 9.62742 2 3C2 2.44772 2.44772 2 3 2Z" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  Call (123) 456-7890
-                </a>
-                <a
-                  href="mailto:hello@tfcthrive.com"
-                  className="flex items-center justify-center gap-2.5 w-full py-3.5 border border-sage/20 text-sage font-medium rounded-full hover:bg-sage-light/40 transition-all duration-200 text-sm tracking-wide"
-                >
-                  <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M2 4L8 9L14 4" strokeLinecap="round" strokeLinejoin="round" />
-                    <rect x="1" y="3" width="14" height="10" rx="1.5" strokeLinecap="round" />
-                  </svg>
-                  Email Directly
-                </a>
-              </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label htmlFor="pt-email" className="block text-sm font-medium text-brown-light mb-1.5">
+                            Email
+                          </label>
+                          <input
+                            type="email"
+                            id="pt-email"
+                            name="pt-email"
+                            required
+                            onFocus={() => setFormFocused(true)}
+                            onBlur={() => setFormFocused(false)}
+                            className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
+                            placeholder="Email"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="pt-phone" className="block text-sm font-medium text-brown-light mb-1.5">
+                            Phone
+                          </label>
+                          <input
+                            type="tel"
+                            id="pt-phone"
+                            name="pt-phone"
+                            onFocus={() => setFormFocused(true)}
+                            onBlur={() => setFormFocused(false)}
+                            className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
+                            placeholder="Phone"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label htmlFor="pt-interest" className="block text-sm font-medium text-brown-light mb-1.5">
+                          I'm looking for help with
+                        </label>
+                        <select
+                          id="pt-interest"
+                          name="pt-interest"
+                          onFocus={() => setFormFocused(true)}
+                          onBlur={() => setFormFocused(false)}
+                          className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all"
+                        >
+                          <option value="">Select an area...</option>
+                          <option value="child">Child & Adolescent Counseling</option>
+                          <option value="adult">Adult & Individual Counseling</option>
+                          <option value="family">Family Counseling</option>
+                          <option value="gifted">Gifted & Neurodivergent Support</option>
+                          <option value="anxiety">Anxiety & Depression</option>
+                          <option value="trauma">Trauma-Informed Care</option>
+                          <option value="other">Something else</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label htmlFor="pt-message" className="block text-sm font-medium text-brown-light mb-1.5">
+                          Anything you'd like to share <span className="text-brown-light/40">(optional)</span>
+                        </label>
+                        <textarea
+                          id="pt-message"
+                          name="pt-message"
+                          rows={3}
+                          onFocus={() => setFormFocused(true)}
+                          onBlur={() => setFormFocused(false)}
+                          className="w-full px-4 py-3 bg-cream border border-sage/10 rounded-xl text-brown placeholder:text-brown-light/40 focus:outline-none focus:border-sage/30 focus:ring-2 focus:ring-sage/10 transition-all resize-none"
+                          placeholder="What's bringing you to counseling?"
+                        />
+                      </div>
+
+                      {status === 'error' && (
+                        <p className="text-sm text-red-600 bg-red-50 px-4 py-3 rounded-xl">
+                          {errorMessage}
+                        </p>
+                      )}
+
+                      <button
+                        type="submit"
+                        disabled={status === 'submitting'}
+                        className="w-full py-4 bg-sage text-warm-white font-medium rounded-full hover:bg-sage-dark transition-all duration-300 hover:shadow-lg hover:shadow-sage/20 tracking-wide text-base mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                      >
+                        {status === 'submitting' ? 'Sending...' : 'Request Free Consultation'}
+                      </button>
+
+                      <p className="text-xs text-brown-light/50 text-center">
+                        Your information is kept strictly confidential.
+                      </p>
+                    </div>
+                  </form>
+                </>
+              )}
+
+              {status !== 'success' && (
+                <>
+                  {/* Divider */}
+                  <div className="flex items-center gap-4 my-6">
+                    <div className="flex-1 h-px bg-sage/10" />
+                    <span className="text-xs text-brown-light/40 uppercase tracking-widest">or</span>
+                    <div className="flex-1 h-px bg-sage/10" />
+                  </div>
+
+                  {/* Direct contact */}
+                  <div className="flex flex-col gap-3">
+                    <a
+                      href="tel:+16305576933"
+                      className="flex items-center justify-center gap-2.5 w-full py-3.5 border border-sage/20 text-sage font-medium rounded-full hover:bg-sage-light/40 transition-all duration-200 text-sm tracking-wide"
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M3 2H6L7.5 5.5L5.5 7C6.5 9 8 10.5 10 11.5L11.5 9.5L15 11V14C15 14.5523 14.5523 15 14 15C7.37258 15 2 9.62742 2 3C2 2.44772 2.44772 2 3 2Z" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      Call (630) 557-6933
+                    </a>
+                    <a
+                      href="mailto:hello@tfcthrive.com"
+                      className="flex items-center justify-center gap-2.5 w-full py-3.5 border border-sage/20 text-sage font-medium rounded-full hover:bg-sage-light/40 transition-all duration-200 text-sm tracking-wide"
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M2 4L8 9L14 4" strokeLinecap="round" strokeLinejoin="round" />
+                        <rect x="1" y="3" width="14" height="10" rx="1.5" strokeLinecap="round" />
+                      </svg>
+                      Email Directly
+                    </a>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Explore full site link */}
