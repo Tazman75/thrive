@@ -27,7 +27,7 @@ export default function Footer() {
 
         <div className="mt-10 pt-8 border-t border-warm-white/[0.06] flex items-center justify-center">
           <p className="text-xs text-warm-white/20">
-            DuPage County, Illinois
+            Naperville, IL 60563
           </p>
         </div>
       </div>

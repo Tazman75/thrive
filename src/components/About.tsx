@@ -15,7 +15,7 @@ export default function About() {
             <div className="relative aspect-[4/5] rounded-[2rem_6rem_2rem_6rem] bg-sage/10 overflow-hidden">
               <img
                 src="/simone.jpeg"
-                alt="Simone Shepardson, Licensed Clinical Professional Counselor"
+                alt="Simone Shepardson, LCPC, MSEd"
                 className="absolute inset-0 w-full h-full object-cover object-top"
               />
               {/* Subtle warm overlay for color cohesion */}
@@ -55,7 +55,7 @@ export default function About() {
 
             {/* Credentials highlights */}
             <div className={`mt-10 flex flex-wrap gap-3 ${isInView ? 'animate-fade-up delay-400' : 'opacity-0'}`}>
-              {['LCPC', 'Play Therapy', 'Gifted & Neurodivergent', 'Trauma-Informed'].map((tag) => (
+              {['LCPC', 'MSEd', 'Play Therapy', 'Gifted & Neurodivergent', 'Trauma-Informed'].map((tag) => (
                 <span
                   key={tag}
                   className="px-4 py-2 bg-sage-light/60 text-sage-dark text-sm font-medium rounded-full"
