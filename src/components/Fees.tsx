@@ -52,10 +52,6 @@ export default function Fees() {
               </li>
               <li className="flex items-center gap-2.5 text-brown-light">
                 <div className="w-1.5 h-1.5 rounded-full bg-sage/60 flex-shrink-0" />
-                Medicaid
-              </li>
-              <li className="flex items-center gap-2.5 text-brown-light">
-                <div className="w-1.5 h-1.5 rounded-full bg-sage/60 flex-shrink-0" />
                 Out of Network
               </li>
             </ul>
