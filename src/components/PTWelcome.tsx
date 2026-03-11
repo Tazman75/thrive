@@ -271,7 +271,7 @@ export default function PTWelcome({ onViewFullSite }: PTWelcomeProps) {
                   Call (123) 456-7890
                 </a>
                 <a
-                  href="mailto:hello@thrivefamilycounseling.com"
+                  href="mailto:hello@tfcthrive.com"
                   className="flex items-center justify-center gap-2.5 w-full py-3.5 border border-sage/20 text-sage font-medium rounded-full hover:bg-sage-light/40 transition-all duration-200 text-sm tracking-wide"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">

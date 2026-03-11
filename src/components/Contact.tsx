@@ -36,8 +36,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-brown-light/70 mb-0.5">Email</p>
-                  <a href="mailto:hello@thrivefamilycounseling.com" className="text-brown font-medium hover:text-sage transition-colors">
-                    hello@thrivefamilycounseling.com
+                  <a href="mailto:hello@tfcthrive.com" className="text-brown font-medium hover:text-sage transition-colors">
+                    hello@tfcthrive.com
                   </a>
                 </div>
               </div>
