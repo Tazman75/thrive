@@ -12,7 +12,7 @@ export default function Fees() {
       <div ref={ref} className="relative z-10 mx-auto max-w-6xl px-6">
         <div className="text-center mb-16 md:mb-20">
           <p className={`text-sm font-medium tracking-[0.2em] uppercase text-sage mb-4 ${isInView ? 'animate-fade-up' : 'opacity-0'}`}>
-            Investment
+            Fees & Insurance
           </p>
           <h2 className={`font-serif text-4xl md:text-5xl font-medium text-brown leading-tight ${isInView ? 'animate-fade-up delay-100' : 'opacity-0'}`}>
             Fees &{' '}
