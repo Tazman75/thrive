@@ -107,7 +107,7 @@ export default function PTWelcome({ onViewFullSite }: PTWelcomeProps) {
                   'Anxiety & Depression',
                   'Child & Adolescent',
                   'Family Counseling',
-                  'Trauma & EMDR',
+                  'Trauma-Informed Care',
                   'Gifted & Neurodivergent',
                   'Play Therapy',
                 ].map((specialty) => (
@@ -220,7 +220,7 @@ export default function PTWelcome({ onViewFullSite }: PTWelcomeProps) {
                       <option value="family">Family Counseling</option>
                       <option value="gifted">Gifted & Neurodivergent Support</option>
                       <option value="anxiety">Anxiety & Depression</option>
-                      <option value="trauma">Trauma & EMDR</option>
+                      <option value="trauma">Trauma-Informed Care</option>
                       <option value="other">Something else</option>
                     </select>
                   </div>

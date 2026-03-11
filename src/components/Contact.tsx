@@ -115,7 +115,7 @@ export default function Contact() {
                     <option value="family">Family Counseling</option>
                     <option value="gifted">Gifted & Neurodivergent Support</option>
                     <option value="anxiety">Anxiety & Depression</option>
-                    <option value="trauma">Trauma & EMDR</option>
+                    <option value="trauma">Trauma-Informed Care</option>
                     <option value="other">Something else</option>
                   </select>
                 </div>

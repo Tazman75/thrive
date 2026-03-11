@@ -68,7 +68,7 @@ const services = [
     ),
   },
   {
-    title: 'Trauma & EMDR',
+    title: 'Trauma-Informed Care',
     description:
       'Walk through deep pain and find release. Specialized trauma-informed care to help you move from survival to a place of peace and wholeness.',
     icon: (
