@@ -25,10 +25,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-warm-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-warm-white/30">
-            &copy; {new Date().getFullYear()} Thrive Family Counseling. All rights reserved.
-          </p>
+        <div className="mt-10 pt-8 border-t border-warm-white/[0.06] flex items-center justify-center">
           <p className="text-xs text-warm-white/20">
             DuPage County, Illinois
           </p>

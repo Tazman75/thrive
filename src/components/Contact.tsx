@@ -49,21 +49,6 @@ export default function Contact() {
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-sage/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-4 h-4 text-sage" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M2 4L8 9L14 4" strokeLinecap="round" strokeLinejoin="round" />
-                    <rect x="1" y="3" width="14" height="10" rx="1.5" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-brown-light/70 mb-0.5">Email</p>
-                  <a href="mailto:hello@tfcthrive.com" className="text-brown font-medium hover:text-sage transition-colors">
-                    hello@tfcthrive.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-sage/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-sage" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M3 2H6L7.5 5.5L5.5 7C6.5 9 8 10.5 10 11.5L11.5 9.5L15 11V14C15 14.5523 14.5523 15 14 15C7.37258 15 2 9.62742 2 3C2 2.44772 2.44772 2 3 2Z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
