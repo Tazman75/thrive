@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Approach from './components/Approach'
+import Fees from './components/Fees'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import PTBanner from './components/PTBanner'
@@ -21,6 +22,7 @@ function App() {
         <About />
         <Services />
         <Approach />
+        <Fees />
         <Contact />
       </main>
       <Footer />
