@@ -54,7 +54,11 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-brown-light/70 mb-0.5">Phone</p>
-                  <a href="tel:+16305576933" className="text-brown font-medium hover:text-sage transition-colors">
+                  <a
+                    href="tel:+16305576933"
+                    onClick={() => typeof window.gtag === 'function' && window.gtag('event', 'phone_click', { event_category: 'contact', event_label: 'contact_section' })}
+                    className="text-brown font-medium hover:text-sage transition-colors"
+                  >
                     (630) 557-6933
                   </a>
                 </div>
