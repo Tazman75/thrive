@@ -30,7 +30,7 @@ export default function Fees() {
               </svg>
             </div>
             <h3 className="font-serif text-xl font-semibold text-brown mb-2">Individual Session</h3>
-            <p className="font-serif text-3xl font-medium text-sage mb-3">$110</p>
+            <p className="font-serif text-3xl font-medium text-sage mb-3">$130</p>
             <p className="text-sm text-brown-light leading-relaxed">
               Per session. A free 15-minute phone consultation is available before your first appointment.
             </p>
@@ -48,15 +48,15 @@ export default function Fees() {
             <ul className="space-y-2.5">
               <li className="flex items-center gap-2.5 text-brown-light">
                 <div className="w-1.5 h-1.5 rounded-full bg-sage/60 flex-shrink-0" />
-                BlueCross BlueShield
+                Blue Cross Blue Shield
               </li>
               <li className="flex items-center gap-2.5 text-brown-light">
                 <div className="w-1.5 h-1.5 rounded-full bg-sage/60 flex-shrink-0" />
-                Out of Network
+                Aetna
               </li>
             </ul>
             <p className="text-xs text-brown-light/60 mt-4">
-              Please verify your coverage. I'm happy to help you check your benefits.
+              For other insurance, I can provide a superbill for out-of-network reimbursement.
             </p>
           </div>
 
