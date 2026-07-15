@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { HEADWAY_BOOKING_URL, trackBookOnlineClick } from '../lib/booking'
 
 export default function PTBanner() {
   const [visible, setVisible] = useState(false)
@@ -29,8 +30,14 @@ export default function PTBanner() {
           <p className="text-xs tracking-wide">
             <span className="text-warm-white/60">Verified on Psychology Today</span>
             <span className="mx-2 text-warm-white/20">|</span>
-            <a href="#contact" className="text-sage hover:text-sage-light transition-colors font-medium">
-              Schedule a free consultation
+            <a
+              href={HEADWAY_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackBookOnlineClick('pt_banner')}
+              className="text-sage hover:text-sage-light transition-colors font-medium"
+            >
+              Book a session online
             </a>
           </p>
 

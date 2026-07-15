@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { HEADWAY_BOOKING_URL, trackBookOnlineClick } from '../lib/booking'
 
 const links = [
   { label: 'About', href: '#about' },
@@ -63,10 +64,13 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={HEADWAY_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackBookOnlineClick('nav')}
             className="ml-2 px-5 py-2.5 bg-sage text-warm-white text-sm font-medium rounded-full hover:bg-sage-dark transition-colors duration-200 tracking-wide"
           >
-            Book a Consultation
+            Book Online
           </a>
         </div>
 
@@ -108,11 +112,16 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
+            href={HEADWAY_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              trackBookOnlineClick('nav_mobile')
+              setMenuOpen(false)
+            }}
             className="mt-2 px-5 py-3 bg-sage text-warm-white text-sm font-medium rounded-full hover:bg-sage-dark transition-colors text-center tracking-wide"
           >
-            Book a Consultation
+            Book Online
           </a>
         </div>
       </div>

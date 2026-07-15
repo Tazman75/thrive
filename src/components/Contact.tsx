@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useInView } from '../hooks/useInView'
 import { useContactForm } from '../hooks/useContactForm'
+import { HEADWAY_BOOKING_URL, trackBookOnlineClick } from '../lib/booking'
 
 export default function Contact() {
   const { ref, isInView } = useInView()
@@ -46,6 +47,30 @@ export default function Contact() {
 
             {/* Contact details */}
             <div className={`space-y-6 ${isInView ? 'animate-fade-up delay-300' : 'opacity-0'}`}>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-sage/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg className="w-4 h-4 text-sage" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <rect x="2" y="3" width="12" height="11" rx="1.5" />
+                    <path d="M2 6.5H14M5 1.5V4M11 1.5V4" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm text-brown-light/70 mb-0.5">Book online</p>
+                  <a
+                    href={HEADWAY_BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackBookOnlineClick('contact_section')}
+                    className="text-brown font-medium hover:text-sage transition-colors"
+                  >
+                    Schedule a session through Headway
+                  </a>
+                  <p className="text-sm text-brown-light/70 mt-1">
+                    Checks your insurance eligibility in seconds.
+                  </p>
+                </div>
+              </div>
+
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-sage/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-4 h-4 text-sage" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">

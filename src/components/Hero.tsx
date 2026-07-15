@@ -1,3 +1,5 @@
+import { HEADWAY_BOOKING_URL, trackBookOnlineClick } from '../lib/booking'
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden grain-overlay">
@@ -42,19 +44,22 @@ export default function Hero() {
           {/* CTA buttons */}
           <div className="animate-fade-up delay-400 flex flex-col sm:flex-row gap-4">
             <a
-              href="#contact"
+              href={HEADWAY_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackBookOnlineClick('hero')}
               className="inline-flex items-center justify-center px-8 py-4 bg-sage text-warm-white font-medium rounded-full hover:bg-sage-dark transition-all duration-300 hover:shadow-lg hover:shadow-sage/20 text-base tracking-wide"
             >
-              Schedule a Consultation
+              Book a Session Online
               <svg className="ml-2 w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M3 8H13M9 4L13 8L9 12" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
             <a
-              href="#about"
+              href="#contact"
               className="inline-flex items-center justify-center px-8 py-4 border border-sage/30 text-sage font-medium rounded-full hover:bg-sage-light/50 transition-all duration-300 text-base tracking-wide"
             >
-              Learn More
+              Free 15-Minute Consultation
             </a>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { useInView } from '../hooks/useInView'
+import { HEADWAY_BOOKING_URL, trackBookOnlineClick } from '../lib/booking'
 
 export default function Fees() {
   const { ref, isInView } = useInView()
@@ -55,7 +56,20 @@ export default function Fees() {
                 Aetna
               </li>
             </ul>
-            <p className="text-xs text-brown-light/60 mt-4">
+            <p className="text-sm text-brown-light mt-4">
+              Insurance sessions are billed through Headway.{' '}
+              <a
+                href={HEADWAY_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackBookOnlineClick('fees_insurance')}
+                className="text-sage font-medium hover:text-sage-dark transition-colors"
+              >
+                Check your coverage &amp; book online
+              </a>
+              .
+            </p>
+            <p className="text-xs text-brown-light/60 mt-3">
               For other insurance, I can provide a superbill for out-of-network reimbursement.
             </p>
           </div>
