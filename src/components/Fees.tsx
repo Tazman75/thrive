@@ -33,7 +33,8 @@ export default function Fees() {
             <h3 className="font-serif text-xl font-semibold text-brown mb-2">Individual Session</h3>
             <p className="font-serif text-3xl font-medium text-sage mb-3">$130</p>
             <p className="text-sm text-brown-light leading-relaxed">
-              Per session. A free 15-minute phone consultation is available before your first appointment.
+              Per session for self-pay clients. Using insurance? Book online and your
+              coverage is confirmed before your first appointment.
             </p>
           </div>
 

@@ -59,7 +59,7 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center justify-center px-8 py-4 border border-sage/30 text-sage font-medium rounded-full hover:bg-sage-light/50 transition-all duration-300 text-base tracking-wide"
             >
-              Free 15-Minute Consultation
+              Ask a Question
             </a>
           </div>
         </div>

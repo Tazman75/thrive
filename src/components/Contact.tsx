@@ -37,12 +37,13 @@ export default function Contact() {
               Get Started
             </p>
             <h2 className={`font-serif text-4xl md:text-5xl font-medium text-brown leading-tight mb-6 ${isInView ? 'animate-fade-up delay-100' : 'opacity-0'}`}>
-              Book a free{' '}
-              <span className="italic text-sage">consultation.</span>
+              Ready to{' '}
+              <span className="italic text-sage">begin?</span>
             </h2>
             <p className={`text-lg text-brown-light leading-relaxed mb-10 ${isInView ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
-              Schedule a complimentary 15-minute phone consultation to see if we're the right fit.
-              There's no commitment, no pressure — just a conversation.
+              The easiest way to get started is booking online — it takes just a few minutes,
+              and your insurance is checked automatically. Have a question first? Send a message
+              and I'll get back to you within a day.
             </p>
 
             {/* Contact details */}

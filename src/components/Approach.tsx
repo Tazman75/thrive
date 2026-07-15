@@ -3,8 +3,8 @@ import { useInView } from '../hooks/useInView'
 const steps = [
   {
     number: '01',
-    title: 'Reach Out',
-    description: 'Book a free 15-minute phone consultation. No commitment, no pressure — just a conversation to see if we\'re the right fit.',
+    title: 'Book Online',
+    description: 'Schedule your first session online in just a few minutes — your insurance coverage is checked automatically before you commit to anything.',
   },
   {
     number: '02',
