@@ -23,7 +23,7 @@ export default function Hero() {
         <div className="max-w-3xl">
           {/* Small tagline */}
           <p className="animate-fade-up text-sm md:text-base font-medium tracking-[0.2em] uppercase text-sage mb-6">
-            Licensed Clinical Professional Counselor, MSEd
+            Licensed Clinical Professional Counselor (LCPC), MSEd
           </p>
 
           {/* Main heading */}
