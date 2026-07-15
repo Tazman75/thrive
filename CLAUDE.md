@@ -36,10 +36,10 @@ public/           Static assets (images, fonts, favicons)
 - **Hosting:** AWS Lightsail instance `thrive-web` (Ubuntu, nginx), AWS profile `thrive`
 - **Static IP:** 3.15.252.24
 - **Mock site:** `https://mock.tfcthrive.com` → `/var/www/thrive-app`
-- **Production site:** `https://www.tfcthrive.com` → `/var/www/coming-soon` (will switch to thrive-app when ready)
+- **Production site:** `https://www.tfcthrive.com` → `/var/www/thrive-app` (same root as mock — every deploy is a production deploy)
 - **SSH:** `ssh ubuntu@3.15.252.24`
 
-### Deploy to mock
+### Deploy (goes live on www.tfcthrive.com AND mock)
 
 ```bash
 npm run build
