@@ -98,9 +98,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-brown-light/70 mb-0.5">Location</p>
-                  <p className="text-brown font-medium">650 E Diehl Road, Suite 121</p>
-                  <p className="text-brown font-medium">Naperville, IL 60563</p>
-                  <p className="text-sm text-brown-light/70 mt-1">Telehealth available statewide</p>
+                  <p className="text-brown font-medium">Naperville, IL</p>
+                  <p className="text-sm text-brown-light/70 mt-1">Telehealth available across Illinois</p>
                 </div>
               </div>
             </div>
