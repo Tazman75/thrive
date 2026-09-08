@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="195" fill="#FAF6F1" stroke="#5B7B6A" stroke-width="2"/>
+
+  <!-- Leaf shape -->
+  <path
+    d="M200 80C200 80 130 130 130 220C130 258.66 161.34 290 200 290C238.66 290 270 258.66 270 220C270 130 200 80 200 80Z"
+    fill="#5B7B6A"
+    opacity="0.15"
+  />
+  <path
+    d="M200 80C200 80 130 130 130 220C130 258.66 161.34 290 200 290C238.66 290 270 258.66 270 220C270 130 200 80 200 80Z"
+    stroke="#5B7B6A"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Center vein -->
+  <path d="M200 290V170" stroke="#5B7B6A" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Left vein -->
+  <path d="M200 240C175 225 160 200 163 178" stroke="#5B7B6A" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Right vein -->
+  <path d="M200 210C225 198 235 178 233 158" stroke="#5B7B6A" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Small left branch -->
+  <path d="M200 205C183 197 175 185 177 172" stroke="#5B7B6A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Text: THRIVE -->
+  <text x="200" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="32" font-weight="600" letter-spacing="8" fill="#2D2A26">THRIVE</text>
+</svg>

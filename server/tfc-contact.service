@@ -1,0 +1,16 @@
+[Unit]
+Description=TFC Contact Form API
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/tfc-api
+ExecStart=/usr/bin/node index.js
+Restart=on-failure
+RestartSec=5
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/tfc-api/.env
+
+[Install]
+WantedBy=multi-user.target

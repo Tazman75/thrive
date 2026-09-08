@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Solid sage background -->
+  <rect width="512" height="512" rx="80" fill="#5B7B6A"/>
+
+  <!-- Leaf shape -->
+  <path
+    d="M256 100C256 100 170 160 170 270C170 317.5 208.5 356 256 356C303.5 356 342 317.5 342 270C342 160 256 100 256 100Z"
+    fill="white"
+    opacity="0.2"
+  />
+  <path
+    d="M256 100C256 100 170 160 170 270C170 317.5 208.5 356 256 356C303.5 356 342 317.5 342 270C342 160 256 100 256 100Z"
+    stroke="white"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Center vein -->
+  <path d="M256 356V210" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Left vein -->
+  <path d="M256 300C225 282 207 252 210 225" stroke="white" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Right vein -->
+  <path d="M256 265C288 250 300 225 297 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Text -->
+  <text x="256" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="600" letter-spacing="10" fill="white" opacity="0.9">THRIVE</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none">
+  <!-- Background -->
+  <rect width="1200" height="1200" fill="#5B7B6A"/>
+
+  <!-- Soft gradient overlay -->
+  <rect width="1200" height="1200" fill="url(#bg-gradient-sq)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="600" cy="380" r="320" fill="white" opacity="0.04"/>
+  <circle cx="600" cy="400" r="250" fill="white" opacity="0.04"/>
+
+  <!-- Leaf icon - centered -->
+  <g transform="translate(460, 180) scale(0.85)">
+    <path
+      d="M170 0C170 0 60 90 60 250C60 305 108 350 170 350C232 350 280 305 280 250C280 90 170 0 170 0Z"
+      fill="white"
+      opacity="0.12"
+    />
+    <path
+      d="M170 0C170 0 60 90 60 250C60 305 108 350 170 350C232 350 280 305 280 250C280 90 170 0 170 0Z"
+      stroke="white"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.7"
+    />
+    <!-- Center vein -->
+    <path d="M170 350V170" stroke="white" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
+    <!-- Left vein -->
+    <path d="M170 285C132 267 113 237 116 210" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <!-- Right vein -->
+    <path d="M170 242C208 227 220 202 217 178" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- Decorative line -->
+  <line x1="440" y1="570" x2="760" y2="570" stroke="white" stroke-width="1" opacity="0.2"/>
+
+  <!-- Main text -->
+  <text x="600" y="680" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="88" font-weight="600" letter-spacing="10" fill="white" opacity="0.95">THRIVE</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="740" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="white" opacity="0.65" letter-spacing="6">FAMILY COUNSELING</text>
+
+  <!-- Divider -->
+  <line x1="440" y1="780" x2="760" y2="780" stroke="white" stroke-width="1" opacity="0.2"/>
+
+  <!-- Location -->
+  <text x="600" y="840" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" fill="white" opacity="0.55" letter-spacing="2">Naperville, IL  ·  Telehealth Across Illinois</text>
+
+  <!-- Phone -->
+  <text x="600" y="885" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" fill="white" opacity="0.7" letter-spacing="2">(630) 557-6933</text>
+
+  <!-- Defs -->
+  <defs>
+    <linearGradient id="bg-gradient-sq" x1="0" y1="0" x2="1200" y2="1200">
+      <stop offset="0%" stop-color="#4A6B5A" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6B8B7A" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+</svg>
