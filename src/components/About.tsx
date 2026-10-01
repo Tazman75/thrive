@@ -1,70 +1,42 @@
-import { useInView } from '../hooks/useInView'
-
 export default function About() {
-  const { ref, isInView } = useInView()
-
   return (
-    <section id="about" className="relative py-24 md:py-36 overflow-hidden">
-      {/* Subtle background accent */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-sage-light/30 rounded-l-[80px] -z-10" />
-
-      <div ref={ref} className="mx-auto max-w-6xl px-6">
-        <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-center">
-          {/* Left - Image placeholder with organic shape */}
-          <div className={`relative ${isInView ? 'animate-fade-up' : 'opacity-0'}`}>
-            <div className="relative aspect-[4/5] rounded-[2rem_6rem_2rem_6rem] bg-sage/10 overflow-hidden">
-              <img
-                src="/simone.jpeg"
-                alt="Simone Shepardson, LCPC, MSEd"
-                className="absolute inset-0 w-full h-full object-cover object-top"
-              />
-              {/* Subtle warm overlay for color cohesion */}
-              <div className="absolute inset-0 bg-gradient-to-t from-sage-dark/10 via-transparent to-transparent" />
-            </div>
-            {/* Floating accent */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-terracotta/10 -z-10" />
-          </div>
-
-          {/* Right - Content */}
-          <div>
-            <p className={`text-sm font-medium tracking-[0.2em] uppercase text-sage mb-4 ${isInView ? 'animate-fade-up delay-100' : 'opacity-0'}`}>
-              About the Therapist
+    <section id="about" className="tl-about">
+      <div className="wrap tl-about-grid">
+        <div className="tl-portrait">
+          <img src="/simone.jpeg" alt="Simone Shepardson, LCPC" width="319" height="400" />
+        </div>
+        <div>
+          <span className="kicker">About the Therapist</span>
+          <h2>
+            Simone Shepardson, <em>LCPC</em>
+          </h2>
+          <p className="cred-line">
+            Licensed Clinical Professional Counselor · MSEd, Northern Illinois University
+          </p>
+          <div className="bio">
+            <p className="pull">
+              “I treasure the vulnerable, courageous moments I've shared in partnership with
+              individuals and families.”
             </p>
-            <h2 className={`font-serif text-4xl md:text-5xl font-medium text-brown leading-tight mb-6 ${isInView ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
-              I treasure the vulnerable,{' '}
-              <span className="italic text-sage">courageous</span> moments.
-            </h2>
-            <div className={`space-y-5 text-brown-light leading-relaxed ${isInView ? 'animate-fade-up delay-300' : 'opacity-0'}`}>
-              <p>
-                Life presents challenging times. Some leave you with awe and peace; others leave you
-                gasping for air and searing with pain, confusion or dread. I treasure the vulnerable,
-                courageous moments I've shared in partnership with individuals and families.
-              </p>
-              <p>
-                For nearly two decades, I have experienced the joy of meeting with children,
-                adolescents, and adults as a Licensed Clinical Professional Counselor. I have served in diverse
-                clinical settings, including inpatient care, partial hospitalization programs, and
-                outpatient therapy centers.
-              </p>
-              <p>
-                My approach is <strong className="text-brown font-medium">collaborative, compassionate, creative</strong> and
-                tailored to each client's needs as we partner together to build resilience, strengthen
-                relationships, establish peace within self, and move toward goals.
-              </p>
-            </div>
-
-            {/* Credentials highlights */}
-            <div className={`mt-10 flex flex-wrap gap-3 ${isInView ? 'animate-fade-up delay-400' : 'opacity-0'}`}>
-              {['LCPC', 'MSEd', 'Play Therapy', 'Gifted & Neurodivergent', 'Trauma-Informed'].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-4 py-2 bg-sage-light/60 text-sage-dark text-sm font-medium rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <p>
+              Life presents challenging times. Some leave you with awe and peace; others leave you
+              gasping for air and searing with pain, confusion, or dread. For more than two decades,
+              I have had the joy of meeting with adults and adolescents as a Licensed Clinical
+              Professional Counselor — in inpatient care, partial hospitalization programs, and
+              outpatient therapy.
+            </p>
+            <p>
+              My approach is warm, trauma-informed, and tailored to you: we partner together to
+              build resilience, strengthen relationships, establish peace within yourself, and move
+              toward your goals. I hold the time spent with others as sacred.
+            </p>
           </div>
+          <ul className="tl-chips">
+            <li>LCPC</li>
+            <li>MSEd</li>
+            <li>Trauma-Informed</li>
+            <li>Gifted &amp; Neurodivergent</li>
+          </ul>
         </div>
       </div>
     </section>

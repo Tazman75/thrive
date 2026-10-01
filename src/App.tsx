@@ -2,10 +2,10 @@ import { useUTMSource, isPsychologyTodayVisitor } from './hooks/useUTMSource'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
-import Services from './components/Services'
-import Approach from './components/Approach'
+import Who from './components/Who'
+import How from './components/How'
 import Fees from './components/Fees'
-import Contact from './components/Contact'
+import Final from './components/Final'
 import Footer from './components/Footer'
 import PTBanner from './components/PTBanner'
 
@@ -14,19 +14,19 @@ function App() {
   const fromPT = isPsychologyTodayVisitor(utmParams)
 
   return (
-    <>
+    <div className="tl" id="top">
       {fromPT && <PTBanner />}
       <Nav />
       <main>
         <Hero />
         <About />
-        <Services />
-        <Approach />
+        <Who />
+        <How />
         <Fees />
-        <Contact />
+        <Final />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
 
