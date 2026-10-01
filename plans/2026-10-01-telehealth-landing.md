@@ -38,6 +38,8 @@ Contact→Final/Footer/Nav) — rename/retire components as fits, keep the repo'
 - index.html: new title, description, canonical, OG, JSON-LD (Person + ProfessionalService/MedicalBusiness).
 - `npm run build` passes. Committed locally, not pushed/deployed.
 
+- Blank-sections report investigated: not a code bug. Headless Chrome full-page render (1280x4800) shows How/Fees/Final/Footer painting correctly; DOM computed styles and hit-testing were correct in the live tab. The blanks were stale raster tiles in the automation Chrome tab (DPR 2.5, tall page, partial paint even in the Who/About region at scrollY 1500).
+
 ## Remaining
 - Human review of visuals (no screenshot tool on this Mac); then push + deploy.
 - Not done: mockup dark-mode theme (site has none); PTWelcome.tsx (unrendered, left as-is) still contains child/family copy; useContactForm hook now unused.
